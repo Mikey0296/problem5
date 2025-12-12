@@ -1,6 +1,6 @@
 ---
 title: "billboard-analysis"
-embed-resoruces: true
+embed-resources: true
 format: html
 editor: visual
 ---
