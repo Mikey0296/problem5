@@ -1,0 +1,40 @@
+---
+title: "billboard-analysis"
+format: html
+editor: visual
+---
+```{r}
+#| label: setup
+#| message: false
+#| warnings: False
+library(tidyverse)
+library(gt)
+library(broom)
+library(readr)
+Pressure<- read.csv("C:/Users/15128/Downloads/pressure.csv")
+College<- read.csv("C:/Users/15128/Downloads/college.csv")
+Billboard<- read.csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-08-26/billboard.csv')
+```
+
+## Problem 5
+```{r}
+#| message: false
+#| warning: False
+#| alt-text: "a plot showing the realtionship between the happniess you feel from a song and the energy of the song"
+ggplot(Billboard, aes(x=happiness,y = energy, color=song=="Chariots of Fire"))+
+geom_point()+
+geom_smooth(method = lm)+
+theme_minimal()+
+scale_color_brewer(palette = "Dark2")+
+labs(color="Chariots of Fire")
+#| alt-text: "a plot showing the realtionship between the energy of the song and the BPM"
+#| message: false
+#| warning: False
+ggplot(Billboard, aes(x=bpm,y = energy,color=song=="Chariots of Fire"))+
+geom_point()+
+theme_minimal()+
+scale_color_brewer(palette="Dark2")+
+labs(color="Chariots of Fire")
+```
+
+When listening to music "The right song(s) can help you start your day off right, get you through monotonous tasks, signal celebration and – at the very least – put a little pep in your step" so picking the right music is very important. Looking at the relationship between energy and happiness we can see a trend that higher energy songs tend to evokes more happiness. For example looking at Chariots of Fire this song has very low energy and evokes very low levels of happiness. So what makes a song have more energy, some say that it is due to BPM but based on the data here there is no trend between the BPM and energy levels eveident in the song from the previous example which has a bpm of 136 but very low evergy score.
